@@ -7,15 +7,14 @@ const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
 
 const connectDB = require('./db/connect');
+const productsRouter = require('./routes/products');
 
 // middleware
 app.use(express.json());
 
 // routes
 
-app.get('/', (req, res) => {
-  res.send('Store API');
-});
+app.use('/api/v1/products', productsRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
